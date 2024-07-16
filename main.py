@@ -19,7 +19,7 @@ file_handler.setFormatter(formatter)
 
 logger.addHandler(file_handler)
 
-infura_url = "https://mainnet.base.org"
+infura_url = "https://arb1.arbitrum.io/rpc"
 web3 = Web3(Web3.HTTPProvider(infura_url))
 
 if not web3.is_connected():
@@ -40,7 +40,7 @@ def send_transaction(private_key, index):
         transaction = contract.functions.delegate(random_delegate)
         gas_estimate = transaction.estimate_gas({'from': my_address})
         txn = transaction.build_transaction({
-            'chainId': 8453,  
+            'chainId': 42161,  
             'gas': gas_estimate,
             'gasPrice': web3.to_wei('20', 'gwei'),
             'nonce': web3.eth.get_transaction_count(my_address),
